@@ -1,3 +1,7 @@
-claim token.invalid.build-fails yes
-claim token.invalid.auth-error yes
-claim token.none.builds yes
+claim alpine.no-compiler.rc 1
+claim alpine.no-compiler.names-gcc yes
+claim alpine.no-compiler.suggests-apk yes
+claim ipe.jobs-equal-cpus yes
+claim ipe.jobs.cpus-2-equals-all yes
+claim ipe.jobs.processor-count-2 2
+claim ipe.checks-loading yes

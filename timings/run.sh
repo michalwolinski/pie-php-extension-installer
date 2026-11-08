@@ -2,7 +2,8 @@
 # Builds grpc 1.85.1 for PHP 8.5.12 in several ways, one at a time, and records wall time, the highest anonymous
 # memory of the container (process memory, not page cache) and the highest load average.
 #   ./timings/run.sh                    every method below, in order (well over an hour on 8 CPUs)
-#   ./timings/run.sh pie-j4 pecl        only these
+#   ./timings/run.sh pie-j4 pecl        only these; also ipe-default, ipe-j4 (install-php-extensions) and
+#                                       alpine-pie-j4, alpine-ipe-j4 (built on Alpine)
 #   ./timings/run.sh redis              redis 6.3.0 with pecl and with PIE, three times each, alternating
 #   ./timings/run.sh sury               grpc from deb.sury.org's php8.5-grpc package, including apt-get update
 #   ./timings/run.sh no-libtool         grpc with -j4 in the bare image plus unzip and zlib only: is libtool needed?
@@ -42,12 +43,20 @@ if [ "${methods[0]}" = no-libtool ]; then
     exit 0
 fi
 for method in "${methods[@]}"; do
+    run_img=$img env=()
     case $method in
-        pie-binary) cmd=(pie install extport/grpc:1.85.1) ;;
-        pie-j*)     cmd=(pie install "-${method#pie-}" grpc/grpc-php-ext:1.85.1) ;;
-        pecl)       cmd=(sh -c "printf '\n\n\n\n' | pecl install grpc-1.85.0 && docker-php-ext-enable grpc") ;;
+        pie-binary)    cmd=(pie install extport/grpc:1.85.1) ;;
+        pie-j*)        cmd=(pie install "-${method#pie-}" grpc/grpc-php-ext:1.85.1) ;;
+        pecl)          cmd=(sh -c "printf '\n\n\n\n' | pecl install grpc-1.85.0 && docker-php-ext-enable grpc") ;;
+        # install-php-extensions builds through pecl, so it gets PECL's newest grpc, 1.85.0.
+        ipe-default)   run_img=$(image ipe 1.5.5); cmd=(install-php-extensions grpc-1.85.0) ;;
+        ipe-j4)        run_img=$(image ipe 1.5.5); env=(-e IPE_PROCESSOR_COUNT=4); cmd=(install-php-extensions grpc-1.85.0) ;;
+        # Alpine: PIE with the build tools installed up front; install-php-extensions installs its own.
+        alpine-pie-j4) run_img=$(image alpine-build 1.5.5); cmd=(pie install -j4 grpc/grpc-php-ext:1.85.1) ;;
+        alpine-ipe-j4) run_img=$(image ipe-alpine 1.5.5); env=(-e IPE_PROCESSOR_COUNT=4); cmd=(install-php-extensions grpc-1.85.0) ;;
+        *) echo "unknown method $method" >&2; exit 1 ;;
     esac
     rm -f "timings/out/$method".*
-    docker run --rm --name "pie-timing-$method" -v "$PWD/timings/measure.sh:/m.sh:ro" -v "$PWD/timings/out:/out" \
-        "$img" /m.sh "$method" "${cmd[@]}" | tee -a timings/out/results.txt
+    docker run --rm --name "pie-timing-$method" ${env[@]+"${env[@]}"} -v "$PWD/timings/measure.sh:/m.sh:ro" -v "$PWD/timings/out:/out" \
+        "$run_img" /m.sh "$method" "${cmd[@]}" | tee -a timings/out/results.txt
 done

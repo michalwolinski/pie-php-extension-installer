@@ -85,3 +85,12 @@ expect 08 example.so-on-8.5.11.ri-rc 0
 expect 10 token.invalid.build-fails yes
 expect 10 token.invalid.auth-error yes
 expect 10 token.none.builds yes
+
+# 11: PIE on Alpine without a compiler; install-php-extensions for comparison
+expect 11 alpine.no-compiler.rc 1
+expect 11 alpine.no-compiler.names-gcc yes
+expect 11 alpine.no-compiler.suggests-apk yes
+expect 11 ipe.jobs-equal-cpus yes
+expect 11 ipe.jobs.cpus-2-equals-all yes
+expect 11 ipe.jobs.processor-count-2 2
+expect 11 ipe.checks-loading yes

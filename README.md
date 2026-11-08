@@ -9,7 +9,7 @@ verifies about prebuilt binaries, what it does when an installed extension does 
 a project, and how `pie.lock` behaves in a Docker build.
 
 Everything runs in the official PHP 8.5.12 images for Debian bookworm and Alpine, with PIE 1.5.5 and 1.6.0-rc.1
-mounted from `ghcr.io/php/pie`, every image pinned by digest.
+mounted from `ghcr.io/php/pie` and `install-php-extensions` 2.13.2 for comparison, every image pinned by digest.
 
 ## Run it
 
@@ -46,7 +46,8 @@ whether the build fits in memory, and a sleeping machine stretches the time.
 | The recommended Dockerfile builds, its extensions load, its `php --ri` line fails the build when an extension is missing, `--no-cache` leaves no Composer cache; its `redis.so` loads on PHP 8.5.11 and, unsupported, on Alpine | `checks/08-example-dockerfile.sh`, `examples/Dockerfile` |
 | The puzzle: the same Dockerfile and `pie.lock` build on PHP 8.5.12 and fail with `No lockfile found` on 8.5.11 | `checks/09-puzzle.sh`, `examples/puzzle/` |
 | A GitHub token passed as a BuildKit secret reaches PIE: an invalid one fails the build with `Could not authenticate against github.com` | `checks/10-github-token.sh`, `examples/token/Dockerfile` |
-| grpc build time and memory for `pecl`, PIE with `-j2`, `-j4`, `-j8`, a prebuilt binary and Sury's package; grpc without `libtool`; redis with `pecl` and PIE | `timings/run.sh`, `timings/out/results.txt` |
+| PIE on Alpine without a compiler names the tools and exits with 1; `install-php-extensions` runs one job per `nproc` (8 under `--cpus=2`), honours `IPE_PROCESSOR_COUNT` and checks that a module loads | `checks/11-alpine-and-install-php-extensions.sh` |
+| grpc build time and memory for `pecl`, PIE with `-j2`, `-j4`, `-j8`, a prebuilt binary and Sury's package; `install-php-extensions` with 4 and 8 jobs; PIE and `install-php-extensions` on Alpine; grpc without `libtool`; redis with `pecl` and PIE | `timings/run.sh`, `timings/out/results.txt` |
 
 ## Versions
 
