@@ -1,0 +1,33 @@
+RESULT pie-binary rc=0 seconds=5 max_anon_mib=39 max_load=1.02 compilers_killed=0
+LOADED 1.85.1
+RESULT pie-j4 rc=0 seconds=615 max_anon_mib=4645 max_load=6.78 compilers_killed=0
+LOADED 1.85.1
+RESULT pie-j2 rc=0 seconds=1072 max_anon_mib=2870 max_load=4.76 compilers_killed=0
+LOADED 1.85.1
+RESULT pie-j8 rc=255 seconds=2 max_anon_mib=28 max_load=3.20 compilers_killed=0
+LOADED no
+RESULT pecl rc=1 seconds=1 max_anon_mib=0 max_load=3.20 compilers_killed=0
+LOADED no
+RESULT pie-j8 rc=1 seconds=344 max_anon_mib=7212 max_load=10.48 compilers_killed=1
+LOADED no
+RESULT pecl rc=1 seconds=1 max_anon_mib=0 max_load=9.25 compilers_killed=0
+LOADED no
+RESULT pecl rc=0 seconds=1987 max_anon_mib=1747 max_load=6.68 compilers_killed=0
+LOADED 1.85.0
+RESULT redis-pecl-1 rc=0 seconds=12 max_anon_mib=148 max_load=2.11 compilers_killed=0
+LOADED 6.3.0
+RESULT redis-pie-1 rc=0 seconds=7 max_anon_mib=645 max_load=3.13 compilers_killed=0
+LOADED 6.3.0
+RESULT redis-pecl-2 rc=0 seconds=11 max_anon_mib=174 max_load=3.13 compilers_killed=0
+LOADED 6.3.0
+RESULT redis-pie-2 rc=0 seconds=6 max_anon_mib=584 max_load=2.96 compilers_killed=0
+LOADED 6.3.0
+RESULT redis-pecl-3 rc=0 seconds=46 max_anon_mib=180 max_load=3.22 compilers_killed=0
+LOADED 6.3.0
+RESULT redis-pie-3 rc=0 seconds=6 max_anon_mib=588 max_load=2.74 compilers_killed=0
+LOADED 6.3.0
+RESULT sury rc=0 seconds=4 max_anon_mib=56 max_load=2.91 compilers_killed=0
+LOADED 1.83.1
+no libtoolize
+RESULT no-libtool rc=0 seconds=633 max_anon_mib=4708 max_load=8.05 compilers_killed=0
+LOADED 1.85.1

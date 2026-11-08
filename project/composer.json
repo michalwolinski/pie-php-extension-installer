@@ -1,0 +1,11 @@
+{
+    "name": "example/app",
+    "description": "A project that declares the extensions it needs, for pie install in the project directory.",
+    "type": "project",
+    "license": "MIT",
+    "require": {
+        "php": "^8.5",
+        "ext-redis": "^6.2",
+        "ext-pcov": "*"
+    }
+}

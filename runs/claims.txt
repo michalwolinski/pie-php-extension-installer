@@ -1,0 +1,3 @@
+claim token.invalid.build-fails yes
+claim token.invalid.auth-error yes
+claim token.none.builds yes

@@ -1,0 +1,27 @@
+Get:1 http://deb.debian.org/debian bookworm InRelease [151 kB]
+Get:2 https://packages.sury.org/php bookworm InRelease [6136 B]
+Get:3 https://packages.sury.org/php bookworm/main arm64 Packages [289 kB]
+Get:4 http://deb.debian.org/debian bookworm-updates InRelease [55.4 kB]
+Get:5 http://deb.debian.org/debian-security bookworm-security InRelease [34.8 kB]
+Get:6 http://deb.debian.org/debian bookworm/main arm64 Packages [8689 kB]
+Get:7 http://deb.debian.org/debian bookworm-updates/main arm64 Packages [6936 B]
+Get:8 http://deb.debian.org/debian-security bookworm-security/main arm64 Packages [360 kB]
+Fetched 9592 kB in 2s (5570 kB/s)
+Reading package lists...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following NEW packages will be installed:
+  php8.5-grpc
+0 upgraded, 1 newly installed, 0 to remove and 0 not upgraded.
+Need to get 3216 kB of archives.
+After this operation, 12.5 MB of additional disk space will be used.
+Get:1 https://packages.sury.org/php bookworm/main arm64 php8.5-grpc arm64 1.83.1-1+0~20260828.47+debian12~1.gbp336955 [3216 kB]
+debconf: delaying package configuration, since apt-utils is not installed
+Fetched 3216 kB in 1s (4691 kB/s)
+Selecting previously unselected package php8.5-grpc.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 7242 files and directories currently installed.)
+Preparing to unpack .../php8.5-grpc_1.83.1-1+0~20260828.47+debian12~1.gbp336955_arm64.deb ...
+Unpacking php8.5-grpc (1.83.1-1+0~20260828.47+debian12~1.gbp336955) ...
+Setting up php8.5-grpc (1.83.1-1+0~20260828.47+debian12~1.gbp336955) ...
+Processing triggers for php8.5-cli (8.5.12-1+0~20261021.27+debian12~1.gbp1a3e8a) ...

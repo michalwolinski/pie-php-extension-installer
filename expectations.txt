@@ -1,0 +1,87 @@
+# What the article claims, one line per claim: "expect <check> <claim> <value>". run.sh compares these with what
+# the checks print; <check> is the number of the check that has to print the claim.
+
+# 01: the official image as it is
+expect 01 bare.rc 1
+expect 01 bare.missing-tools libtoolize/glibtoolize,_unzip
+expect 01 bare.suggests-apt 1
+expect 01 bare.redis-loaded 0
+
+# 02: make jobs: pecl runs plain make, PIE one job per CPU it may use
+expect 02 pecl.make-command make
+expect 02 pie.jobs-equal-cpus yes
+expect 02 pie.jobs.cpus-2 2
+expect 02 pie.jobs.cpuset-2 2
+expect 02 nproc.cpus-2-equals-all yes
+expect 02 pie.jobs.explicit-j2 2
+
+# 03: a prebuilt binary whose library is missing (Alpine without libstdc++), PIE 1.5.5 and 1.6.0-rc.1
+expect 03 alpine.1.5.5.none.pie_rc 0
+expect 03 alpine.1.5.5.none.not_enabled_warning 1
+expect 03 alpine.1.5.5.none.ini_left 1
+expect 03 alpine.1.5.5.none.startup_warning 1
+expect 03 alpine.1.5.5.none.ri_rc 1
+expect 03 alpine.1.5.5.libstdcxx.pie_rc 0
+expect 03 alpine.1.5.5.libstdcxx.startup_warning 0
+expect 03 alpine.1.5.5.libstdcxx.ri_rc 0
+expect 03 alpine.1.6.0-rc.1.none.pie_rc 0
+expect 03 alpine.1.6.0-rc.1.none.not_enabled_warning 1
+expect 03 alpine.1.6.0-rc.1.none.ini_left 1
+expect 03 alpine.1.6.0-rc.1.none.startup_warning 1
+expect 03 alpine.1.6.0-rc.1.none.ri_rc 1
+expect 03 alpine.1.6.0-rc.1.libstdcxx.pie_rc 0
+expect 03 alpine.1.6.0-rc.1.libstdcxx.startup_warning 0
+expect 03 alpine.1.6.0-rc.1.libstdcxx.ri_rc 0
+
+# 04: what PIE checks about a prebuilt binary, and what pie.lock records
+expect 04 integrity.note 1
+expect 04 integrity.used-binary 1
+expect 04 lock.version 6.3.0
+expect 04 lock.dist-is-source-zipball 1
+expect 04 lock.shasum shasum=[]
+
+# 05: a configure option turns a binary package into a source build
+expect 05 configure.plain.binary 1
+expect 05 configure.option.binary 0
+expect 05 configure.option.built 1
+
+# 06: pie install in a project directory, without a terminal
+expect 06 project.1.5.5.rc 1
+expect 06 project.1.5.5.loaded 00
+expect 06 project.1.5.5.pcov-candidates pecl/pcov,vitaliyboyko/pcov
+expect 06 project.1.5.5.select.rc 0
+expect 06 project.1.5.5.select.loaded 11
+expect 06 project.1.6.0-rc.1.rc 0
+expect 06 project.1.6.0-rc.1.loaded 11
+expect 06 project.1.6.0-rc.1.picked pecl/pcov,phpredis/phpredis
+
+# 07: pie.lock and --from-lock
+expect 07 lock.locked-version v5.1.27
+expect 07 lock.right-dir.rc 0
+expect 07 lock.right-dir.apcu 5.1.27
+expect 07 lock.wrong-dir.rc 1
+expect 07 lock.wrong-dir.no-lockfile 1
+expect 07 lock.wrong-dir.apcu none
+
+# 08: the recommended Dockerfile
+expect 08 example.builds 1
+expect 08 example.loaded 11
+expect 08 example.startup-warnings 0
+expect 08 example.unzip-removed yes
+expect 07 lock.dir.8.5.11-vs-8.5.12 different
+expect 07 lock.dir.arm64-vs-amd64 different
+expect 08 example.mutation-build-fails 1
+expect 01 unzip-only.rc 0
+expect 01 unzip-only.libtool-warning 1
+expect 01 unzip-only.redis-loads yes
+expect 09 puzzle.8.5.12.builds yes
+expect 09 puzzle.8.5.11.builds no
+expect 09 puzzle.8.5.11.no-lockfile yes
+expect 06 project.no-composer-lock.rc 1
+expect 06 project.no-composer-lock.message yes
+expect 08 example.composer-cache-left no
+expect 08 example.debian-so-on-alpine.ri-rc 0
+expect 08 example.so-on-8.5.11.ri-rc 0
+expect 10 token.invalid.build-fails yes
+expect 10 token.invalid.auth-error yes
+expect 10 token.none.builds yes

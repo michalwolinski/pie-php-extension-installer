@@ -1,0 +1,86 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "f59013989525d28ce68dffcf3fadfda7",
+    "packages": [
+        {
+            "name": "apcu/apcu",
+            "version": "v5.1.27",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/krakjoe/apcu.git",
+                "reference": "36e51f020a3f798286d990cb8857b22e501ef523"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/krakjoe/apcu/zipball/36e51f020a3f798286d990cb8857b22e501ef523",
+                "reference": "36e51f020a3f798286d990cb8857b22e501ef523",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">= 7.0.0"
+            },
+            "type": "php-ext",
+            "notification-url": "https://packagist.org/downloads/",
+            "php-ext": {
+                "extension-name": "apcu",
+                "configure-options": [
+                    {
+                        "name": "disable-apcu-mmap",
+                        "description": "Disable mmap, falls back on shm"
+                    },
+                    {
+                        "name": "disable-apcu-rwlocks",
+                        "description": "Disable rwlocks in APCu"
+                    },
+                    {
+                        "name": "disable-valgrind-checks",
+                        "description": "Disable Valgrind-based memory checks"
+                    },
+                    {
+                        "name": "enable-apcu",
+                        "description": "Enable APCu support"
+                    },
+                    {
+                        "name": "enable-apcu-clear-signal",
+                        "description": "Enable SIGUSR1 clearing handler"
+                    },
+                    {
+                        "name": "enable-apcu-debug",
+                        "description": "Enable APCu debugging"
+                    },
+                    {
+                        "name": "enable-apcu-spinlocks",
+                        "description": "Use spinlocks before flocks"
+                    },
+                    {
+                        "name": "enable-coverage",
+                        "description": "Include code coverage symbols (DEVELOPERS ONLY!!)"
+                    }
+                ]
+            },
+            "license": [
+                "PHP-3.01"
+            ],
+            "description": "APCu - APC User Cache",
+            "support": {
+                "issues": "https://github.com/krakjoe/apcu/issues",
+                "source": "https://github.com/krakjoe/apcu/tree/v5.1.27"
+            },
+            "time": "2025-08-28T19:16:23+00:00",
+            "published-time": "2025-08-28T19:26:41+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": {},
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": {},
+    "platform-dev": {},
+    "plugin-api-version": "2.11.0"
+}

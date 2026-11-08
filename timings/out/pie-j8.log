@@ -1,0 +1,21 @@
+🥧 PHP Installer for Extensions (PIE) 1.5.5, from The PHP Foundation
+You are running PHP 8.5.12
+Target PHP installation: 8.5.12 nts, on Linux/OSX/etc arm64 (from /usr/local/bin/php)
+Found package: grpc/grpc-php-ext:v1.85.1 which provides ext-grpc
+Extracted grpc/grpc-php-ext:v1.85.1 source to: /root/.pie/php8.5_daf413ac2c6373732eaa89ffb4a8bf81/vendor/grpc/grpc-php-ext
+phpize complete.
+Configure complete with options: --with-php-config=/usr/local/bin/php-config
+
+In ProcessFailedWithLimitedOutput.php line 39:
+                                                                               
+  The command "'/usr/bin/make' '-j8'" failed. Output was saved in "/tmp/pie_m  
+  ake_output_3b1sk0imvai4d45nqdp" as it was too long                           
+                                                                               
+  Exit Code: 2(Misuse of shell builtins)                                       
+                                                                               
+  Working directory: /root/.pie/php8.5_daf413ac2c6373732eaa89ffb4a8bf81/vendo  
+  r/grpc/grpc-php-ext                                                          
+                                                                               
+
+install [-j|--make-parallel-jobs MAKE-PARALLEL-JOBS] [--skip-enable-extension] [--force] [--suppress-download-url-method SUPPRESS-DOWNLOAD-URL-METHOD] [-d|--working-dir WORKING-DIR] [--with-php-config WITH-PHP-CONFIG] [--with-php-path WITH-PHP-PATH] [--with-phpize-path WITH-PHPIZE-PATH] [--no-cache] [--allow-non-interactive-project-install] [--no-dev] [--select SELECT] [--auto-install-build-tools] [--no-build-tools-check] [--auto-install-system-dependencies] [--no-system-dependencies-check] [--from-lock] [--] [<requested-package-and-version>...]
+

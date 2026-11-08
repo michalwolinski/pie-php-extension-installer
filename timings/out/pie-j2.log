@@ -1,0 +1,10 @@
+🥧 PHP Installer for Extensions (PIE) 1.5.5, from The PHP Foundation
+You are running PHP 8.5.12
+Target PHP installation: 8.5.12 nts, on Linux/OSX/etc arm64 (from /usr/local/bin/php)
+Found package: grpc/grpc-php-ext:v1.85.1 which provides ext-grpc
+Extracted grpc/grpc-php-ext:v1.85.1 source to: /root/.pie/php8.5_daf413ac2c6373732eaa89ffb4a8bf81/vendor/grpc/grpc-php-ext
+phpize complete.
+Configure complete with options: --with-php-config=/usr/local/bin/php-config
+Build complete: /root/.pie/php8.5_daf413ac2c6373732eaa89ffb4a8bf81/vendor/grpc/grpc-php-ext/modules/grpc.so
+Install complete: /usr/local/lib/php/extensions/no-debug-non-zts-20250925/grpc.so
+✅ Extension grpc/grpc-php-ext:v1.85.1 is enabled and loaded in /usr/local/bin/php
